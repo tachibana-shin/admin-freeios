@@ -17,7 +17,7 @@
       </form>
    </div>
 </template>
-<style lang="scss" scss scoped>
+<style lang="scss" scoped>
    .main {
       display: flex;
       align-items: center;

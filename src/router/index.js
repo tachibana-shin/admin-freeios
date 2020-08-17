@@ -1,38 +1,38 @@
 import Vue from "vue"
 import VueRouter from "vue-router"
-
+/*
 import Editor from "../pages/Editor.vue"
 import AppManager from "../pages/AppManager.vue"
 import iCloud from "../pages/iCloudManager.vue"
 import Error404 from "../pages/404.vue"
 import MarkdownEditor from "../pages/MarkdownManager.vue"
 import Login from "../pages/Login.vue"
-
+*/
 Vue.use(VueRouter)
 
 const routes = [
    {
       path: "/",
-      component: AppManager
+      component: () => import("../pages/AppManager.vue")
    },
    {
       path: "/editor/:id",
-      component: Editor
+      component: () =>  import("../pages/Editor.vue")
    },
    {
       path: "/upload",
-      component: Editor,
+      component: () => import("../pages/Editor.vue"),
       meta: {
          upload: true
       }
    },
    {
       path: "/icloud",
-      component: iCloud
+      component: () => import("../pages/iCloudManager.vue")
    },
    {
       path: "/md-(tutorial|rules|faqs)",
-      component: MarkdownEditor,
+      component: () => import("../pages/MarkdownManager.vue"),
       meta: {
          title($route) {
             return {
@@ -45,15 +45,15 @@ const routes = [
    },
    {
       path: "/login",
-      component: Login
+      component: () => import("../pages/Login.vue")
    },
    {
       path: "*",
-      component: Error404
+      component: () => import("../pages/404.vue")
    },
    {
       path: "/404",
-      component: Error404
+      component: () =>  import("../pages/404.vue")
    }
 ]
 

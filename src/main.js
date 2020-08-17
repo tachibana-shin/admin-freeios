@@ -6,9 +6,11 @@ import VueFab from "vue-float-action-button"
 import VueLoadingOverlay from "vue-loading-overlay"
 import VueProgressBar from "vue-progressbar"
 import VueNotification from "vue-notification"
+import Eruda from "eruda"
+
+Eruda.init()
 
 Vue.use(BootstrapVue)
-Vue.use(VueSweetAlert2)
 Vue.use(VueFab)
 Vue.use(VueLoadingOverlay)
 Vue.use(VueProgressBar, {

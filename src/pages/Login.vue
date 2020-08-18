@@ -91,43 +91,42 @@
                axios.post("http://localhost:8080/admin/api/login.php", new FormData(target))
                   .then(res => res.data)
                   .then(json => {
-		     console.log( json )
+                     console.log(json)
                      if (json.error == 1) {
                         throw new Error(json.mess)
                      }
 
-                     this.$notify({
-                        group: "App",
-                        width: "100%",
-                        position: "top left",
-                        title: "Successfully",
-                        text: "Đăng nhập thành công",
-                        type: "success"
-                     })
+                     this.$AppSuccess("Success", "Login success.")
                      setTimeout(() => {
-                        if ( this.$route.params.url ) {
+                        if (this.$route.params.url) {
                            this.$router.push(this.$route.params.url)
                         } else {
                            this.$router.push("/")
                         }
-                     }, 3000)
+                     })
                   })
                   .catch(({ stack, message }) => {
-                     console.log( stack, message )
-		     this.$notify({
-                        group: "App",
-                        width: "100%",
-                        position: "top left",
-                        title: message,
-                        text: stack,
-                        type: "error"
-                     })
+                     console.log(stack, message)
+                     this.$AppError(message, stack)
+                     this.wasValid = true
                   })
                   .finally(() => loading.hide())
             } else {
                this.wasValid = true
             }
+         },
+         checkLogined() {
+            axios.get("http://localhost:8080/admin/api/check-login.php")
+            .then(res => res.data)
+            .then(json => {
+               if ( json.logined ) {
+                  this.$router.replace("/")
+               }
+            })
          }
+      },
+      created() {
+         this.checkLogined()
       }
    }
 </script>

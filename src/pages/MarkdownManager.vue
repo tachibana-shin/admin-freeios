@@ -58,31 +58,15 @@
                .then(res => res.data)
                .then(json => {
                   console.log(json)
-                  if (json.error != 0) {
+                  if (json.error == 0) {
                      throw new Error(json.mess)
                   } else {
-
-                     this.$notify({
-                        group: "App",
-                        width: "100%",
-                        position: "top left",
-                        title: "Successfully",
-                        text: "Cập nhật thành công",
-                        type: "success"
-                     })
-
+                     this.$AppSuccess("Success", "Update success")
                   }
                })
                .catch(e => {
                   console.log(e)
-                  this.$notify({
-                     group: "App",
-                     width: "100%",
-                     position: "top left",
-                     title: e.message,
-                     text: e.stack,
-                     type: "error"
-                  })
+                  this.$AppError(e.message, e.stack)
                })
                .finally(() => loading.hide())
          },
@@ -103,7 +87,11 @@
                .then(res => res.data)
                .then(json => {
                   if (json.error == 1) {
-                     this.$router.replace("/404")
+                     if ( json["auth-error"] == true ) {
+                        this.$router.push(""/login?url=" + this.$route.path")
+                     } else {
+                        this.$router.replace("/404")
+                     }
                      throw new Error(json.mess)
                   } else {
                      this.md = json.md
@@ -111,14 +99,7 @@
                })
                .catch(e => {
                   setTimeout(() => {
-                     this.$notify({
-                        group: "App",
-                        width: "100%",
-                        position: "top left",
-                        title: e.message,
-                        message: e.stack,
-                        type: "error"
-                     })
+                     this.$AppError(e.message, e.stack)
                   })
                })
                .finally(() => loading.hide())

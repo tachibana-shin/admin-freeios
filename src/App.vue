@@ -40,6 +40,15 @@
             //  finish the progress bar
             this.$Progress.finish()
          })
+         
+         axios.post("http://localhost:8080/admin/api/check-login.php")
+            .then(res => res.data)
+            .then(json => {
+               if ( json.logined == false ) {
+                  this.$router.replace("/login")
+                  this.$store.$commit("updateAccount", json.data)
+               }
+            })
       }
    }
 </script>

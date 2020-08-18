@@ -1,12 +1,14 @@
 <template>
    <b-navbar toggleable="lg" type="light" variant="light">
-      <b-navbar-toggle class="navbar-toggler border-0" :target="id"/>
+      <b-navbar-toggle class="border-0" :target="id"/>
       
-      <b-navbar-brand tag="span" class="navbar-brand">
+      <b-navbar-brand tag="span">
          Free iOS Admin
       </b-navbar-brand>
       
-      <b-navbar-brand/>
+      <b-navbar-brand tag="span">
+         <b-avatar src="https://nguyenthanh1995.github.io/favicon.ico"/>
+      </b-navbar-brand>
       
       <b-collapse :id="id" is-nav>
          <b-navbar-nav>

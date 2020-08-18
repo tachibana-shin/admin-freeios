@@ -21,10 +21,9 @@
             Không có tài khoản nào
          </div>
       </form>
-      
-      <vue-fab icon="toc" main-btn-color="#999" size="big" fab-item-animate="alive" >
-         <fab-item icon="save" color="#c7d23b" @clickItem="save" :idx="0"/>
-         <fab-item icon="add" @clickItem="addRow" :idx="1"/>
+      <vue-fab icon="toc" main-btn-color="#999" size="big" fab-item-animate="alive">
+         <fab-item icon="save" color="#c7d23b" @clickItem="save" :idx="0" />
+         <fab-item icon="add" @clickItem="addRow" :idx="1" />
       </vue-fab>
    </div>
 </template>
@@ -112,41 +111,25 @@
             })
 
             axios.put("http://localhost:8080/admin/api/icloud.php", {
-               accounts: this.accounts.map(({ username, password, show }) => ({ username, password, show }))
-            })
+                  accounts: this.accounts.map(({ username, password, show }) => ({ username, password, show }))
+               })
                .then(res => res.data)
                .then(json => {
-                  console.log( json )
-                  if (json.error != 0) {
+                  console.log(json)
+                  if (json.error == 1) {
                      throw new Error(json.mess)
                   } else {
-
-                     this.$notify({
-                        group: "App",
-                        width: "100%",
-                        position: "top left",
-                        title: "Successfully",
-                        text: "Cập nhật thành công",
-                        type: "success"
-                     })
-
+                     this.$AppSuccess("Success", "Update success.")
                   }
                })
                .catch(e => {
                   console.log(e)
-                  this.$notify({
-                     group: "App",
-                     width: "100%",
-                     position: "top left",
-                     title: e.message,
-                     text: e.stack,
-                     type: "error"
-                  })
+                  this.$AppError(e.message, e.stack)
                })
                .finally(() => loading.hide())
          },
          remove(index) {
-            
+
             this.accounts.splice(index, 1)
          }
       },
@@ -159,16 +142,20 @@
          axios.get("http://localhost:8080/admin/api/icloud.php")
             .then(res => res.data)
             .then(json => {
-               console.log( json )
-	       if ( Array.isArray(json) ) {
+               console.log(json)
+               if (Array.isArray(json)) {
                   json.map(e => {
                      if (!("key" in e)) {
                         e.key = Date.now() + Math.random()
                      }
                   })
-	       }
-	       if ( json.error == 1 ) {                           if ( json["error-auth"] ) {                        this.$router.push("/login")
-                   }                                               throw new Error(json.mess)                  }
+               }
+               if (json.error == 1) {
+                  if (json["auth-error"]) {
+                     this.$router.push(""/login?url=" + this.$route.path")
+                  }
+                  throw new Error(json.mess)
+               }
 
                this.accounts = json
             })

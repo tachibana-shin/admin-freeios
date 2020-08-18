@@ -304,21 +304,14 @@
                   
                   if ( json.error == 1 ) {
                      if ( json["error-auth"] ) {
-                        this.$router.push("/login")
+                        this.$router.push(""/login?url=" + this.$route.path")
                      }
                      throw new Error(json.mess)
                   }
                   
                })
-               .catch((e) => {
-                  this.$notify({
-                     group: "App",
-                     width: "100%",
-                     position: "top left",
-                     title: e.message,
-                     message: e.stack,
-                     type: "error"
-                  })
+               .catch(({ stack, message }) => {
+                  this.$AppError(stack, message)
                   $state.complete()
                })
          },
@@ -343,7 +336,7 @@
                      })
                      .then(res => res.data)
                      .then(response => {
-                        if (response.error != 0)
+                        if (response.error == 1)
                            throw new Error(response.mess)
                         this.apps = this.apps.filter(e => e != app)
                         return response
@@ -359,23 +352,9 @@
             }).then(({ value }) => {
                let { error, mess } = value
                if (error == 0) {
-                  this.$notify({
-                     group: "App",
-                     width: "100%",
-                     position: "top left",
-                     title: "Delete done",
-                     text: "success",
-                     type: "success"
-                  })
+                  this.$AppSuccess("Delete success", "You delete app.")
                } else {
-                  this.$notify({
-                     group: "App",
-                     width: "100%",
-                     position: "top left",
-                     title: "Delete failed",
-                     text: mess,
-                     type: "error"
-                  })
+                  this.$AppError("Delete failed", mess)
                }
             })
 

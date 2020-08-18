@@ -302,7 +302,7 @@
                      .then(res => res.data)
                      .then(response => {
                         console.log(response)
-                        if (response.error != 0)
+                        if (response.error == 1)
                            throw new Error(response.mess)
                         return response
                      })
@@ -317,24 +317,10 @@
             }).then(({ value }) => {
                let { error, mess } = value
                if (error == 0) {
-                  this.$notify({
-                     group: "App",
-                     width: "100%",
-                     position: "top left",
-                     title: "Delete done",
-                     text: "success",
-                     type: "success"
-                  })
+                  this.$AppSuccess("Delete success", "You delete app.")
                   setTimeout(() => this.$router.go(-1))
                } else {
-                  this.$notify({
-                     group: "App",
-                     width: "100%",
-                     position: "top left",
-                     title: "Delete failed",
-                     text: mess,
-                     type: "error"
-                  })
+                  this.$AppError("Delete failed", mess)
                }
             })
 
@@ -367,31 +353,15 @@
                .then(res => res.data)
                .then(json => {
                   console.log(json)
-                  if (json.error != 0) {
+                  if (json.error == 1) {
                      throw new Error(json.mess)
                   } else {
-
-                     this.$notify({
-                        group: "App",
-                        width: "100%",
-                        position: "top left",
-                        title: "Successfully",
-                        text: "Cập nhật thành công",
-                        type: "success"
-                     })
-
+                     this.$AppSuccess("Successfully", "Upload to server success.")
                   }
                })
                .catch(e => {
                   console.log(e)
-                  this.$notify({
-                     group: "App",
-                     width: "100%",
-                     position: "top left",
-                     title: e.message,
-                     text: e.stack,
-                     type: "error"
-                  })
+                  this.$AppError(e.message, e.stack)
                })
                .finally(() => loading.hide())
          },
@@ -410,7 +380,11 @@
                .then(json => {
                   console.log( json )
                   if (json.error == 1) {
-                     this.$router.replace("/404")
+                     if ( json["auth-error"] == true ) {
+                        this.$router.push(""/login?url=" + this.$route.path")
+                     } else {
+                        this.$router.replace("/404")
+                     }
                      throw new Error(json.mess)
                   } else {
                      this.app = json
@@ -418,14 +392,7 @@
                   }
                })
                .catch(e => {
-                  this.$notify({
-                     group: "App",
-                     width: "100%",
-                     position: "top left",
-                     title: e.message,
-                     message: e.stack,
-                     type: "error"
-                  })
+                  this.$AppError(e.message, e.stack)
                })
                .finally(() => loading.hide())
          }

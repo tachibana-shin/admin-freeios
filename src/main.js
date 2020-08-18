@@ -2,6 +2,7 @@ import Vue from "vue"
 import App from "./App.vue"
 import BootstrapVue from "bootstrap-vue"
 import router from "./router/index.js"
+import store from "./store/index.js"
 import VueFab from "vue-float-action-button"
 import VueLoadingOverlay from "vue-loading-overlay"
 import VueProgressBar from "vue-progressbar"
@@ -14,15 +15,37 @@ Vue.use(BootstrapVue)
 Vue.use(VueFab)
 Vue.use(VueLoadingOverlay)
 Vue.use(VueProgressBar, {
-  color: 'rgb(143, 255, 199)',
-  failedColor: "#f00",
-  height: '3px'
+   color: 'rgb(143, 255, 199)',
+   failedColor: "#f00",
+   height: '3px'
 })
 Vue.use(VueNotification)
+
+Vue.prototype.$AppError = function(title, message) {
+   this.$notify({
+      group: "App",
+      width: "100%",
+      position: "top left",
+      title: title || "Error unknown",
+      text: message,
+      type: "error"
+   })
+}
+Vue.prototype.$AppSuccess = function(title, message) {
+   this.$notify({
+      group: "App",
+      width: "100%",
+      position: "top left",
+      title: title || "Success",
+      text: message,
+      type: "success"
+   })
+}
 
 new Vue({
    el: "#app",
    router,
+   store,
    template: "<App/>",
    components: { App }
 })

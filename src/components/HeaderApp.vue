@@ -7,7 +7,19 @@
       </b-navbar-brand>
       
       <b-navbar-brand tag="span">
-         <b-avatar src="https://nguyenthanh1995.github.io/favicon.ico"/>
+         <S-SDropdown>
+            <template v-slot:button-content>
+               <b-avatar src="https://nguyenthanh1995.github.io/favicon.ico"/>
+               <div class="dropdown-menu">
+                  <a to="/myaccount" class="dropdown-item">
+                     Manager Account
+                  </a>
+                  <a to="/logout" class="dropdown-item">
+                     Log out
+                  </a>
+               </div>
+            </template>
+         </S-SDropdown>
       </b-navbar-brand>
       
       <b-collapse :id="id" is-nav>

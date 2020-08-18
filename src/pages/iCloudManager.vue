@@ -160,15 +160,20 @@
             .then(res => res.data)
             .then(json => {
                console.log( json )
-               json.map(e => {
-                  if (!("key" in e)) {
-                     e.key = Date.now() + Math.random()
-                  }
-               })
+	       if ( Array.isArray(json) ) {
+                  json.map(e => {
+                     if (!("key" in e)) {
+                        e.key = Date.now() + Math.random()
+                     }
+                  })
+	       }
+	       if ( json.error == 1 ) {                           if ( json["error-auth"] ) {                        this.$router.push("/login")
+                   }                                               throw new Error(json.mess)                  }
+
                this.accounts = json
             })
             .catch(e => {
-               this.$once("hook:mounted", () => {
+               setTimeout(() => {
                   this.$notify({
                      group: "App",
                      width: "100%",

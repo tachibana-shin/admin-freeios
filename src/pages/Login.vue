@@ -91,6 +91,7 @@
                axios.post("http://localhost:8080/admin/api/login.php", new FormData(target))
                   .then(res => res.data)
                   .then(json => {
+		     console.log( json )
                      if (json.error == 1) {
                         throw new Error(json.mess)
                      }
@@ -112,7 +113,8 @@
                      }, 3000)
                   })
                   .catch(({ stack, message }) => {
-                     this.$notify({
+                     console.log( stack, message )
+		     this.$notify({
                         group: "App",
                         width: "100%",
                         position: "top left",

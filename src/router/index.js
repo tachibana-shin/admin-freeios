@@ -59,6 +59,7 @@ const routes = [
 
 export default new VueRouter({
    mode: "history",
+   base: "/admin/",
    scrollBehavior(to, from, saved) {
       return saved || { x: 0, y : 0 }
    },

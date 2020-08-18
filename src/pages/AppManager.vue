@@ -304,7 +304,7 @@
                   
                   if ( json.error == 1 ) {
                      if ( json["error-auth"] ) {
-                        this.$router.push("/login?url=" + this.$route.path")
+                        this.$router.push("/login?url=" + this.$route.path)
                      }
                      throw new Error(json.mess)
                   }

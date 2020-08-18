@@ -381,7 +381,7 @@
                   console.log( json )
                   if (json.error == 1) {
                      if ( json["auth-error"] == true ) {
-                        this.$router.push(""/login?url=" + this.$route.path")
+                        this.$router.push("/login?url=" + this.$route.path")
                      } else {
                         this.$router.replace("/404")
                      }

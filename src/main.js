@@ -21,6 +21,12 @@ Vue.use(VueProgressBar, {
 })
 Vue.use(VueNotification)
 
+Vue.mixin({
+   mounted() {
+      this.$emit("hook:mounted")
+   }
+})
+
 Vue.prototype.$AppError = function(title, message) {
    // fix function not render
    function run() {

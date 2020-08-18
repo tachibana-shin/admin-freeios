@@ -1,27 +1,24 @@
 <template>
    <b-navbar toggleable="lg" type="light" variant="light">
-      <b-navbar-toggle class="border-0" :target="id"/>
-      
+      <b-navbar-toggle class="border-0" :target="id" />
       <b-navbar-brand tag="span">
          Free iOS Admin
       </b-navbar-brand>
-      
       <b-navbar-brand tag="span">
          <S-SDropdown>
             <template v-slot:button-content>
-               <b-avatar src="https://nguyenthanh1995.github.io/favicon.ico"/>
-               <div class="dropdown-menu">
-                  <a to="/myaccount" class="dropdown-item">
-                     Manager Account
-                  </a>
-                  <a to="/logout" class="dropdown-item">
-                     Log out
-                  </a>
-               </div>
+               <b-avatar src="https://nguyenthanh1995.github.io/favicon.ico"  class="avatar"/>
             </template>
+            <div class="dropdown-menu">
+               <a to="/myaccount" class="dropdown-item">
+                  Manager Account
+               </a>
+               <a to="/logout" class="dropdown-item">
+                  Log out
+               </a>
+            </div>
          </S-SDropdown>
       </b-navbar-brand>
-      
       <b-collapse :id="id" is-nav>
          <b-navbar-nav>
             <b-nav-item to="/" active-class="" exact-active-class="active"> App Manager </b-nav-item>
@@ -36,20 +33,30 @@
       </b-collapse>
    </b-navbar>
 </template>
-
 <style lang="scss" scoped>
    .navbar-toggler:hover {
       border: 0 !important;
       outline: none !important;
       box-shadow: none !important;
    }
+
    .collapsw {
       .navbar-nav {
          margin-left: 2.5rem !important
       }
    }
+   .avatar {
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 50%;
+      &::before {
+         display: none !important;
+      }
+      &::after {
+         display: none !important;
+      }
+   }
 </style>
-
 <script>
    import SSDropdown from "./SSDropdown.vue"
    export default {

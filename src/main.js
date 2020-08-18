@@ -22,14 +22,23 @@ Vue.use(VueProgressBar, {
 Vue.use(VueNotification)
 
 Vue.prototype.$AppError = function(title, message) {
-   this.$notify({
-      group: "App",
-      width: "100%",
-      position: "top left",
-      title: title || "Error unknown",
-      text: message,
-      type: "error"
-   })
+   // fix function not render
+   function run() {
+      this.$notify({
+         group: "App",
+         width: "100%",
+         position: "top left",
+         title: title || "Error unknown",
+         text: message,
+         type: "error"
+      })
+   }
+   
+   if ( this.$el ) {
+      setTimeout(() => run(), 10)
+   } else {
+      this.$once("hook:mounted", () => run())
+   }
 }
 Vue.prototype.$AppSuccess = function(title, message) {
    this.$notify({

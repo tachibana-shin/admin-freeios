@@ -378,7 +378,7 @@
                })
                .then(res => res.data)
                .then(json => {
-                  console.log( json )
+                  console.log( typeof json )
                   if (json.error == 1) {
                      if ( json["auth-error"] == true ) {
                         this.$router.push("/login?url=" + this.$route.path)

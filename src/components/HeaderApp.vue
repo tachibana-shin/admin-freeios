@@ -45,14 +45,16 @@
    }
    .collapsw {
       .navbar-nav {
-         margin-left: 1rem !important
+         margin-left: 2.5rem !important
       }
    }
 </style>
 
 <script>
+   import SSDropdown from "./SSDropdown.vue"
    export default {
       name: "HeaderApp",
+      components: { SSDropdown },
       data() {
          return {
             id: "_" + Math.random().toString(36)

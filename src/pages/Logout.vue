@@ -2,9 +2,9 @@
    <div class="main">
       <div class="logout">
          <div class="header">
-            <b-avatar src="https://nguyenthanh1995.github.io/favicon.ico" size="2.5rem"/>
+            <img class="avatar" src="https://nguyenthanh1995.github.io/favicon.ico"/>
          </div>
-         <div class="loading mt-3">
+         <div class="loading">
             <b-spinner type="border"/> Logout...
          </div>
       </div>
@@ -22,11 +22,20 @@
       align-items: center;
       text-align: center;
       .logout {
+         .header {
+            .avatar {
+               width: 2.5rem;
+               height: 2.5rem;
+               border: 1px solid rgba(0, 0, 0, .1);
+               border-radius: 50%;
+            }
+         }
          .loading {
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 12px;
+            font-size: 12px;loading
+            margin-top: 3rem;
          }
       }
    }

@@ -7,16 +7,14 @@
       <b-navbar-brand tag="span">
          <S-SDropdown>
             <template v-slot:button-content>
-               <b-avatar src="https://nguyenthanh1995.github.io/favicon.ico"  class="avatar"/>
+               <b-avatar src="https://nguyenthanh1995.github.io/favicon.ico" class="avatar" size="2.5rem"/>
             </template>
-            <div class="dropdown-menu">
-               <a to="/myaccount" class="dropdown-item">
-                  Manager Account
-               </a>
-               <a to="/logout" class="dropdown-item">
-                  Log out
-               </a>
-            </div>
+            <a to="/myaccount" class="dropdown-item">
+               Manager Account
+            </a>
+            <a to="/logout" class="dropdown-item">
+               Log out
+            </a>
          </S-SDropdown>
       </b-navbar-brand>
       <b-collapse :id="id" is-nav>
@@ -45,20 +43,23 @@
          margin-left: 2.5rem !important
       }
    }
+
    .avatar {
       width: 2.5rem;
       height: 2.5rem;
       border-radius: 50%;
+
       &::before {
          display: none !important;
       }
+
       &::after {
          display: none !important;
       }
    }
 </style>
 <script>
-   import SSDropdown from "./SSDropdown.vue"
+   import SSDropdown from "@/components/SSDropdown.vue"
    export default {
       name: "HeaderApp",
       components: { SSDropdown },

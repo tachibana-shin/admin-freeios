@@ -29,7 +29,7 @@ Vue.mixin({
 
 Vue.prototype.$AppError = function(title, message) {
    // fix function not render
-   function run() {
+   const run = () => {
       this.$notify({
          group: "App",
          width: "100%",

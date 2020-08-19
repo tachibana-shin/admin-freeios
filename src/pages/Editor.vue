@@ -378,7 +378,7 @@
                })
                .then(res => { if ( typeof res.data == "object" ) return res.data; try { return JSON.parse(res.data) } catch(e) { return { error: 1, mess: res.data } } })
                .then(json => {
-                  console.log( JSON.parse(json))
+                  
                   console.log( typeof json )
                   if (json.error == 1) {
                      if ( json["auth-error"] == true ) {

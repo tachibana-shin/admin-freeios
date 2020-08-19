@@ -41,6 +41,7 @@
                throw new Error(json.mess)
             }
             this.$AppSuccess("Success", "Logout!")
+            this.$router.push("/")
          })
          .catch(({ message, stack }) => {
             this.$AppError(message, stack)

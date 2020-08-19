@@ -378,6 +378,7 @@
                })
                .then(res => res.data)
                .then(json => {
+                  console.log( JSON.parse(json))
                   console.log( typeof json )
                   if (json.error == 1) {
                      if ( json["auth-error"] == true ) {

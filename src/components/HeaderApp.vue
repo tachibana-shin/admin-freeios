@@ -9,12 +9,12 @@
             <template v-slot:button-content>
                <b-avatar src="https://nguyenthanh1995.github.io/favicon.ico" class="avatar" size="2.5rem"/>
             </template>
-            <a to="/myaccount" class="dropdown-item">
+            <router-link to="/myaccount" class="dropdown-item">
                Manager Account
-            </a>
-            <a to="/logout" class="dropdown-item">
+            </router-link>
+            <router-link to="/logout" class="dropdown-item">
                Log out
-            </a>
+            </router-link>
          </S-SDropdown>
       </b-navbar-brand>
       <b-collapse :id="id" is-nav>
@@ -45,8 +45,8 @@
    }
 
    .avatar {
-      width: 2.5rem;
-      height: 2.5rem;
+      width: 2.5rem !important:
+      height: 2.5rem !important;
       border-radius: 50%;
 
       &::before {

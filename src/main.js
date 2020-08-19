@@ -8,6 +8,7 @@ import VueLoadingOverlay from "vue-loading-overlay"
 import VueProgressBar from "vue-progressbar"
 import VueNotification from "vue-notification"
 import Eruda from "eruda"
+import axios from "axios"
 
 Eruda.init()
 
@@ -56,6 +57,7 @@ Vue.prototype.$AppSuccess = function(title, message) {
       type: "success"
    })
 }
+Vue.prototype.$axios = axios
 
 new Vue({
    el: "#app",

@@ -349,7 +349,7 @@
                container: null
             })
 
-            axios.post("http://localhost:8080/admin/api/app.php", formData)
+           this.$axios.post("http://localhost:8080/admin/api/app.php", formData)
                .then(res => { if ( typeof res.data == "object" ) return res.data; try { return JSON.parse(res.data) } catch(e) { return { error: 1, mess: res.data } } })
                .then(json => {
                   console.log(json)
@@ -371,7 +371,7 @@
                height: 50,
                container: null
             })
-            axios.get("http://localhost:8080/admin/api/app.php", {
+           this.$axios.get("http://localhost:8080/admin/api/app.php", {
                   params: {
                      id: this.$route.params.id
                   }

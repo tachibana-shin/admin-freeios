@@ -285,7 +285,7 @@
             this.$refs.VueInfinite.stateChanger.reset()
          },
          infiniteHandler($state) {
-            axios.get("http://localhost:8080/admin/api/all-app.php", {
+           this.$axios.get("http://localhost:8080/admin/api/all-app.php", {
                   params: {
                      page: this.page++,
                      category: this.$options.optsCategory[this.category].value,

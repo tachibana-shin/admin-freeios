@@ -88,7 +88,7 @@
                   container: null
                })
 
-               axios.post("http://localhost:8080/admin/api/login.php", new FormData(target))
+              this.$axios.post("http://localhost:8080/admin/api/login.php", new FormData(target))
                   .then(res => { if ( typeof res.data == "object" ) return res.data; try { return JSON.parse(res.data) } catch(e) { return { error: 1, mess: res.data } } })
                   .then(json => {
                      console.log(json)
@@ -116,7 +116,7 @@
             }
          },
          checkLogined() {
-            axios.get("http://localhost:8080/admin/api/check-login.php")
+           this.$axios.get("http://localhost:8080/admin/api/check-login.php")
             .then(res => { if ( typeof res.data == "object" ) return res.data; try { return JSON.parse(res.data) } catch(e) { return { error: 1, mess: res.data } } })
             .then(json => {
                if ( json.logined ) {

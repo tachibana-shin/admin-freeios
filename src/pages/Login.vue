@@ -89,6 +89,7 @@
                })
 
               this.$axios.post("http://localhost:8080/admin/api/login.php", new FormData(target))
+                  .then(e => (console.log(e), e))
                   .then(res => { if ( typeof res.data == "object" ) return res.data; try { return JSON.parse(res.data) } catch(e) { return { error: 1, mess: res.data } } })
                   .then(json => {
                      console.log(json)
@@ -97,6 +98,7 @@
                      }
 
                      this.$AppSuccess("Success", "Login success.")
+                     this.$store.commit("updateAccount", json.data)
                      setTimeout(() => {
                         if (this.$route.params.url) {
                            this.$router.push(this.$route.params.url)

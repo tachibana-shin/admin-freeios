@@ -10,6 +10,9 @@ export default new Vuex.Store({
    mutations: {
       updateAccount(state, payload) {
          state.account = payload
+      },
+      emptyAccount(state) {
+         state.account = null
       }
    }
 })

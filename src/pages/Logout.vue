@@ -2,9 +2,9 @@
    <div class="main">
       <div class="logout">
          <div class="header">
-            <b-avatar src="https://nguyenthanh1995.github.io/favicon.ico"/>
+            <b-avatar src="https://nguyenthanh1995.github.io/favicon.ico" size="2.5rem"/>
          </div>
-         <div class="loading">
+         <div class="loading mt-3">
             <b-spinner type="border"/> Logout...
          </div>
       </div>
@@ -26,6 +26,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            font-size: 12px;
          }
       }
    }
@@ -42,6 +43,7 @@
             }
             this.$AppSuccess("Success", "Logout!")
             this.$router.push("/")
+            this.$store.commit("emptyAccount")
          })
          .catch(({ message, stack }) => {
             this.$AppError(message, stack)

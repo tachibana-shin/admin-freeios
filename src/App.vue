@@ -46,7 +46,7 @@
             .then(json => {
                if (json.logined == false) {
                   this.$router.replace("/login")
-               else {
+               } else {
                   this.$store.commit("updateAccount", json.data)
                }
             })

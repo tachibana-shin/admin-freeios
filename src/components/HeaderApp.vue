@@ -12,7 +12,8 @@
             <router-link to="/myaccount" class="dropdown-item">
                Manager Account
             </router-link>
-            <router-link to="/logout" class="dropdown-item">
+            <div class="dropdown-diliver"></div>
+            <router-link to="/logout" class="dropdown-item text-danger">
                Log out
             </router-link>
          </S-SDropdown>

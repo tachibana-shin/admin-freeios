@@ -41,13 +41,10 @@
             this.$Progress.finish()
          })
 
-        this.$axios.post("http://localhost:8080/admin/api/check-login.php")
-            .then(res => { if (typeof res.data == "object") return res.data; try { return JSON.parse(res.data) } catch (e) { return { error: 1, mess: res.data } } })
+         this.$store.dipatch("currentUser")
             .then(json => {
                if (json.logined == false) {
                   this.$router.replace("/login")
-               } else {
-                  this.$store.commit("updateAccount", json.data)
                }
             })
       }

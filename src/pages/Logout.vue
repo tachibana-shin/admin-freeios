@@ -34,7 +34,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 12px;loading
+            font-size: 12px;
             margin-top: 3rem;
          }
       }

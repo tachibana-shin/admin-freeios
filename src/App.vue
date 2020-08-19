@@ -41,7 +41,7 @@
             this.$Progress.finish()
          })
 
-         this.$store.dipatch("currentUser")
+         this.$store.dispatch("currentUser")
             .then(json => {
                if (json.logined == false) {
                   this.$router.replace("/login")

@@ -89,7 +89,7 @@
                })
 
               this.$axios.post("http://localhost:8080/admin/api/login.php", new FormData(target))
-                  .then(e => (console.log(e), e))
+                  .then(e => (console.log(e.data), e))
                   .then(res => { if ( typeof res.data == "object" ) return res.data; try { return JSON.parse(res.data) } catch(e) { return { error: 1, mess: res.data } } })
                   .then(json => {
                      console.log(json)

@@ -45,7 +45,7 @@
    }
 
    .avatar {
-      width: 2.5rem !important:
+      width: 2.5rem !important;
       height: 2.5rem !important;
       border-radius: 50%;
 

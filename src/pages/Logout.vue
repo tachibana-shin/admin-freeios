@@ -35,7 +35,7 @@
    export default {
       created() {
          axios.post("http://localhost:8080/admin/api/logout.php")
-         .then(res => res.data)
+         .then(res => { if ( typeof res.data == "object" ) return res.data; try { return JSON.parse(res.data) } catch(e) { return { error: 1, mess: res.data } } })
          .then(json => {
             if ( json.error == 1 ) {
                throw new Error(json.mess)

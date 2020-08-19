@@ -293,7 +293,7 @@
                      sortby: this.$options.optsSortBy[this.sortBy].value
                   }
                })
-               .then(res => res.data)
+               .then(res => { if ( typeof res.data == "object" ) return res.data; try { return JSON.parse(res.data) } catch(e) { return { error: 1, mess: res.data } } })
                .then(json => {
                   if (Array.isArray(json) && json.length > 0) {
                      this.apps.push(...json)
@@ -334,7 +334,7 @@
                            action: "delete"
                         }
                      })
-                     .then(res => res.data)
+                     .then(res => { if ( typeof res.data == "object" ) return res.data; try { return JSON.parse(res.data) } catch(e) { return { error: 1, mess: res.data } } })
                      .then(response => {
                         if (response.error == 1)
                            throw new Error(response.mess)

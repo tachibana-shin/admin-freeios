@@ -55,7 +55,7 @@
             
 
             axios.post("http://localhost:8080/admin/api/markdown.php", formData)
-               .then(res => res.data)
+               .then(res => { if ( typeof res.data == "object" ) return res.data; try { return JSON.parse(res.data) } catch(e) { return { error: 1, mess: res.data } } })
                .then(json => {
                   console.log(json)
                   if (json.error == 0) {
@@ -84,7 +84,7 @@
                      path: this.$route.params.pathMatch
                   }
                })
-               .then(res => res.data)
+               .then(res => { if ( typeof res.data == "object" ) return res.data; try { return JSON.parse(res.data) } catch(e) { return { error: 1, mess: res.data } } })
                .then(json => {
                   if (json.error == 1) {
                      if ( json["auth-error"] == true ) {

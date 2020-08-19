@@ -7,7 +7,7 @@
       <b-navbar-brand tag="span">
          <S-SDropdown>
             <template v-slot:button-content>
-               <b-avatar src="https://nguyenthanh1995.github.io/favicon.ico" class="avatar" size="2.5rem"/>
+               <img src="https://nguyenthanh1995.github.io/favicon.ico" class="avatar"/>
             </template>
             <router-link to="/myaccount" class="dropdown-item">
                Manager Account

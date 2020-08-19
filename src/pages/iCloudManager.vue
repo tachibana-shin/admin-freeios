@@ -113,7 +113,7 @@
             axios.put("http://localhost:8080/admin/api/icloud.php", {
                   accounts: this.accounts.map(({ username, password, show }) => ({ username, password, show }))
                })
-               .then(res => res.data)
+               .then(res => { if ( typeof res.data == "object" ) return res.data; try { return JSON.parse(res.data) } catch(e) { return { error: 1, mess: res.data } } })
                .then(json => {
                   console.log(json)
                   if (json.error == 1) {
@@ -140,7 +140,7 @@
             container: null
          })
          axios.get("http://localhost:8080/admin/api/icloud.php")
-            .then(res => res.data)
+            .then(res => { if ( typeof res.data == "object" ) return res.data; try { return JSON.parse(res.data) } catch(e) { return { error: 1, mess: res.data } } })
             .then(json => {
                console.log(json)
                if (Array.isArray(json)) {

@@ -299,7 +299,7 @@
                            action: "delete"
                         }
                      })
-                     .then(res => res.data)
+                     .then(res => { if ( typeof res.data == "object" ) return res.data; try { return JSON.parse(res.data) } catch(e) { return { error: 1, mess: res.data } } })
                      .then(response => {
                         console.log(response)
                         if (response.error == 1)
@@ -350,7 +350,7 @@
             })
 
             axios.post("http://localhost:8080/admin/api/app.php", formData)
-               .then(res => res.data)
+               .then(res => { if ( typeof res.data == "object" ) return res.data; try { return JSON.parse(res.data) } catch(e) { return { error: 1, mess: res.data } } })
                .then(json => {
                   console.log(json)
                   if (json.error == 1) {
@@ -376,7 +376,7 @@
                      id: this.$route.params.id
                   }
                })
-               .then(res => res.data)
+               .then(res => { if ( typeof res.data == "object" ) return res.data; try { return JSON.parse(res.data) } catch(e) { return { error: 1, mess: res.data } } })
                .then(json => {
                   console.log( JSON.parse(json))
                   console.log( typeof json )

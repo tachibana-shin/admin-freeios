@@ -9,7 +9,7 @@
             <template v-slot:button-content>
                <i class="fas fa-user" style="font-size: 1.5rem"></i>
             </template>
-            <span class="dropdown-item font-weight"> {{ $store.state.account.user }} </span>
+            <span class="dropdown-item font-bold"> {{ $store.state.account.user }} </span>
             <router-link to="/myaccount" class="dropdown-item mt-1">
                Manager Account
             </router-link>

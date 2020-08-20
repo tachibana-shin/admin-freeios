@@ -32,9 +32,13 @@
 
 <style lang="scss" scoped>
    .main {
+      padding: {
+         left: 15px;
+         right: 15px
+      };
       .title {
          font-weight: normal !important;
-         font-size: 1rem !important;
+         font-size: .8rem !important;
          color: #6c757d;
          text-transform: uppercase;
       }

@@ -4,17 +4,14 @@
          <form ref="FormDataCofirmPassword" class="form-group">
             <label> Enter Password </label>
             <div class="group-password">
-               <input type="password" name="password">
-               <span class="eye">
-                  <i class="fas fa-eye"></i>
-               </span>
+               <input type="password" name="password" class="form-control">
             </div>
-            <b-button variant="primary" block @click="confirmPassword"> Continue </b-button>
+            <b-button variant="primary" block @click="confirmPassword" class="mt-3"> Continue </b-button>
             <small class="text-secondary"> Để tiếp tục bạn cần nhập mật khẩu. </small>
          </form>
       </div>
       <div class="privacy" v-if="renderPage">
-         <h1 class="title"> Quản lý tài khoản </h1>
+         <!--<h1 class="title"> Quản lý tài khoản </h1>-->
          <div class="content">
             <div class="form-group">
                <label> Email </label>
@@ -26,9 +23,6 @@
                <label> Change Password </label>
                <div class="group-password">
                   <input type="password">
-                  <span class="eye">
-                     <i class="fas fa-eye"></i>
-                  </span>
                </div>
                <b-button @click="savePassword"> Save </b-button>
             </div>
@@ -40,7 +34,9 @@
    .main {
       padding: {
          left: 15px;
-         right: 15px
+         right: 15px;
+         top: 40px;
+         bottom: 40px;
       }
 
 
@@ -57,6 +53,7 @@
                   margin: auto 0 auto 0;
                }
             }
+            margin-top: 30px;
          }
       }
    }
@@ -70,7 +67,7 @@
       },
       methods: {
          confirmPassword() {
-            axios.post("http://localhost:8080/admin/api/confirm-password.php", new FormData(this.$refs.FormDataConfirmPassword))
+            this.$axios.post("http://localhost:8080/admin/api/confirm-password.php", new FormData(this.$refs.FormDataConfirmPassword))
             .then(res => res.data)
             .then(json => {
                if ( json.error == 1 ) {

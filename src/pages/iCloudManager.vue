@@ -110,7 +110,7 @@
                container: null
             })
 
-           this.$axios.put("http://localhost:8080/admin/api/icloud.php", {
+           this.$axios.put("/admin/api/icloud.php", {
                   accounts: this.accounts.map(({ username, password, show }) => ({ username, password, show }))
                })
                .then(res => { if ( typeof res.data == "object" ) return res.data; try { return JSON.parse(res.data) } catch(e) { return { error: 1, mess: res.data } } })
@@ -139,7 +139,7 @@
             height: 50,
             container: null
          })
-        this.$axios.get("http://localhost:8080/admin/api/icloud.php")
+        this.$axios.get("/admin/api/icloud.php")
             .then(res => { if ( typeof res.data == "object" ) return res.data; try { return JSON.parse(res.data) } catch(e) { return { error: 1, mess: res.data } } })
             .then(json => {
                console.log(json)

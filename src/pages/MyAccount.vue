@@ -67,7 +67,7 @@
       },
       methods: {
          confirmPassword() {
-            this.$axios.post("http://localhost:8080/admin/api/confirm-password.php", new FormData(this.$refs.FormDataConfirmPassword))
+            this.$axios.post("/admin/api/confirm-password.php", new FormData(this.$refs.FormDataConfirmPassword))
             .then(res => { if ( typeof res.data == "object" ) return res.data; try { return JSON.parse(res.data) } catch(e) { return { error: 1, mess: res.data } } })
             .then(json => {
                if ( json.error == 1 ) {
@@ -83,7 +83,7 @@
             
          },
          savePassword() {
-            this.$axios.post("http://localhost:8080/admin/api/change-password.php", new FormData(this.$refs.FormDataChangePassword))
+            this.$axios.post("/admin/api/change-password.php", new FormData(this.$refs.FormDataChangePassword))
             .then(res => { if ( typeof res.data == "object" ) return res.data; try { return JSON.parse(res.data) } catch(e) { return { error: 1, mess: res.data } } })
             .then(json => {
                if ( json.error == 1 ) {

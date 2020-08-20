@@ -285,7 +285,7 @@
             this.$refs.VueInfinite.stateChanger.reset()
          },
          infiniteHandler($state) {
-           this.$axios.get("http://localhost:8080/admin/api/all-app.php", {
+           this.$axios.get("/admin/api/all-app.php", {
                   params: {
                      page: this.page++,
                      category: this.$options.optsCategory[this.category].value,
@@ -328,7 +328,7 @@
                showLoaderOnConfirm: true,
                preConfirm: () => {
                   return axios
-                     .delete("http://localhost:8080/admin/api/app.php", {
+                     .delete("/admin/api/app.php", {
                         data: {
                            id,
                            action: "delete"

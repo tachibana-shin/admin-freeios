@@ -54,7 +54,7 @@
             formData.append("md", this.MDE.value())
             
 
-           this.$axios.post("http://localhost:8080/admin/api/markdown.php", formData)
+           this.$axios.post("/admin/api/markdown.php", formData)
                .then(res => { if ( typeof res.data == "object" ) return res.data; try { return JSON.parse(res.data) } catch(e) { return { error: 1, mess: res.data } } })
                .then(json => {
                   console.log(json)
@@ -79,7 +79,7 @@
                container: null
             })
             
-           this.$axios.get("http://localhost:8080/admin/api/markdown.php", {
+           this.$axios.get("/admin/api/markdown.php", {
                   params: {
                      path: this.$route.params.pathMatch
                   }

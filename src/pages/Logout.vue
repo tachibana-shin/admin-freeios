@@ -44,7 +44,7 @@
 <script>
    export default {
       created() {
-        this.$axios.post("http://localhost:8080/admin/api/logout.php")
+        this.$axios.post("/admin/api/logout.php")
          .then(res => { if ( typeof res.data == "object" ) return res.data; try { return JSON.parse(res.data) } catch(e) { return { error: 1, mess: res.data } } })
          .then(json => {
             if ( json.error == 1 ) {

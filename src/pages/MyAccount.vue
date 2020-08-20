@@ -1,6 +1,6 @@
 <template>
    <div class="main">
-      <div class="requestPassword" v-if="!render">
+      <div class="requestPassword" v-if="!renderPage">
          <form ref="FormDataCofirmPassword" class="form-group">
             <label> Enter Password </label>
             <div class="group-password">
@@ -13,7 +13,7 @@
             <small class="text-secondary"> Để tiếp tục bạn cần nhập mật khẩu. </small>
          </form>
       </div>
-      <div class="privacy" v-if="render">
+      <div class="privacy" v-if="renderPage">
          <h1 class="title"> Quản lý tài khoản </h1>
          <div class="content">
             <div class="form-group">
@@ -65,7 +65,7 @@
    export default {
       data() {
          return {
-            render: false
+            renderPage: false
          }
       },
       methods: {
@@ -76,7 +76,7 @@
                if ( json.error == 1 ) {
                   throw new Error(json.mess)
                }
-               this.render = true
+               this.renderPage = true
             })
             .catch(({ stack, message }) => {
                this.$AppError(message, stack)

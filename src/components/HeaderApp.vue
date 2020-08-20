@@ -7,7 +7,7 @@
       <b-navbar-brand tag="span">
          <S-SDropdown toggle-class="no-caret" v-if="$store.state.account">
             <template v-slot:button-content>
-               <img src="https://nguyenthanh1995.github.io/favicon.ico" class="avatar"/>
+               <i class="fas fa-user" style="font-size: 2.5rem"></i>
             </template>
             <span class="dropdown-item font-weight"> {{ $store.state.account.user }} </span>
             <router-link to="/myaccount" class="dropdown-item mt-1">

@@ -1,7 +1,7 @@
 <template>
    <div class="main">
       <div class="requestPassword" v-if="!renderPage">
-         <form ref="FormDataCofirmPassword" class="form-group">
+         <form ref="FormDataConfirmPassword" class="form-group">
             <label> Enter Password </label>
             <div class="group-password">
                <input type="password" name="password" class="form-control">

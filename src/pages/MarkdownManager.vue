@@ -58,7 +58,7 @@
                .then(res => { if ( typeof res.data == "object" ) return res.data; try { return JSON.parse(res.data) } catch(e) { return { error: 1, mess: res.data } } })
                .then(json => {
                   console.log(json)
-                  if (json.error == 0) {
+                  if (json.error == 1) {
                      throw new Error(json.mess)
                   } else {
                      this.$AppSuccess("Success", "Update success")

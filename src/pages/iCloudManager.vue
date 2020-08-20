@@ -109,10 +109,13 @@
                height: 50,
                container: null
             })
+            
+            let formData = new FormData
+            
+            formData.append("action", "put")
+            formData.append("json", JSON.stringify(this.accounts.map(({ username, password, show }) => ({ username, password, show }))))
 
-           this.$axios.put("/admin/api/icloud.php", {
-                  accounts: this.accounts.map(({ username, password, show }) => ({ username, password, show }))
-               })
+           this.$axios.post("/admin/api/icloud.php", formData)
                .then(res => { if ( typeof res.data == "object" ) return res.data; try { return JSON.parse(res.data) } catch(e) { return { error: 1, mess: res.data } } })
                .then(json => {
                   console.log(json)

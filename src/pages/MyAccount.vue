@@ -38,7 +38,7 @@
       };
       .title {
          font-weight: normal !important;
-         font-size: .8rem !important;
+         font-size: 16px !important;
          color: #6c757d;
          text-transform: uppercase;
       }

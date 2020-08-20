@@ -51,7 +51,7 @@
                throw new Error(json.mess)
             }
             this.$AppSuccess("Success", "Logout!")
-            this.$router.push("/")
+            this.$router.push("/login")
             this.$store.commit("emptyAccount")
          })
          .catch(({ message, stack }) => {

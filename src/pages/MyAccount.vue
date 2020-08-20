@@ -4,7 +4,7 @@
          <form ref="FormDataConfirmPassword" class="form-group">
             <label> Enter Password </label>
             <div class="group-password">
-               <input type="password" name="password" class="form-control">
+               <input type="password" name="password" class="form-control" placeholder="Password">
             </div>
             <b-button variant="primary" block @click="confirmPassword" class="mt-3"> Continue </b-button>
             <small class="text-secondary"> Để tiếp tục bạn cần nhập mật khẩu. </small>
@@ -22,7 +22,7 @@
             <form ref="FormDataChangePassword" class="form-group">
                <label> Change Password </label>
                <div class="group-password">
-                  <input type="password" class="form-control" name="newPassword">
+                  <input type="password" class="form-control" name="newPassword" placeholder="New Password">
                </div>
                <b-button @click="savePassword"> Save </b-button>
             </form>
@@ -84,7 +84,7 @@
          },
          savePassword() {
             this.$axios.post("http://localhost:8080/admin/api/change-password.php", new FormData(this.$refs.FormDataChangePassword))
-            .then(res => res.data)
+            .then(res => { if ( typeof res.data == "object" ) return res.data; try { return JSON.parse(res.data) } catch(e) { return { error: 1, mess: res.data } } })
             .then(json => {
                if ( json.error == 1 ) {
                   throw new Error(json.mess)

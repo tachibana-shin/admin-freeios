@@ -22,7 +22,7 @@
             <form ref="FormDataChangePassword" class="form-group">
                <label> Change Password </label>
                <div class="group-password">
-                  <input type="password" class="form-control">
+                  <input type="password" class="form-control" name="newPassword">
                </div>
                <b-button @click="savePassword"> Save </b-button>
             </form>

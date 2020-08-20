@@ -15,17 +15,17 @@
          <div class="content">
             <div class="form-group">
                <label> Email </label>
-               <input type="email" placeholder="Example: example@example.com">
+               <input type="email" placeholder="Example: example@example.com" class="form-control">
                <b-button @click="saveEmail"> Save </b-button>
             </div>
             
-            <div class="form-group">
+            <form ref="FormDataChangePassword" class="form-group">
                <label> Change Password </label>
                <div class="group-password">
-                  <input type="password">
+                  <input type="password" class="form-control">
                </div>
                <b-button @click="savePassword"> Save </b-button>
-            </div>
+            </form>
          </div>
       </div>
    </div>
@@ -53,7 +53,7 @@
                   margin: auto 0 auto 0;
                }
             }
-            margin-top: 30px;
+            margin-top: 1.5rem;
          }
       }
    }
@@ -83,7 +83,18 @@
             
          },
          savePassword() {
-            
+            this.$axios.post("http://localhost:8080/admin/api/change-password.php", new FormData(this.$refs.FormDataChangePassword))
+            .then(res => res.data)
+            .then(json => {
+               if ( json.error == 1 ) {
+                  throw new Error(json.mess)
+               }
+               
+               this.$AppSuccess("Success", "Change password done.")
+            })
+            .catch(({ message, stack }) => {
+               this.$AppError(message, stack)
+            })
          }
       }
    }

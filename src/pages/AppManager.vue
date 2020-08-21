@@ -327,13 +327,11 @@
                confirmButtonColor: "#dc3545",
                showLoaderOnConfirm: true,
                preConfirm: () => {
+                  let fromData = new FormData
+                  formData.append("id", id)
+                  formData.append("action", "delete")
                   return axios
-                     .delete("/admin/api/app.php", {
-                        data: {
-                           id,
-                           action: "delete"
-                        }
-                     })
+                     .post("/admin/api/app.php", formData)
                      .then(res => { if ( typeof res.data == "object" ) return res.data; try { return JSON.parse(res.data) } catch(e) { return { error: 1, mess: res.data } } })
                      .then(response => {
                         if (response.error == 1)

@@ -327,7 +327,7 @@
                confirmButtonColor: "#dc3545",
                showLoaderOnConfirm: true,
                preConfirm: () => {
-                  let fromData = new FormData
+                  let formData = new FormData
                   formData.append("id", id)
                   formData.append("action", "delete")
                   return axios

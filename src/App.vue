@@ -41,6 +41,7 @@
             this.$Progress.finish()
             
             let fn = to.meta._title || to.meta.title
+            console.log( fn )
             document.title = typeof fn == "function" ? fn(this.$route) : fn
          })
 

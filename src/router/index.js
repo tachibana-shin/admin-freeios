@@ -13,22 +13,32 @@ Vue.use(VueRouter)
 const routes = [
    {
       path: "/",
-      component: () => import("../pages/AppManager.vue")
+      component: () => import("../pages/AppManager.vue"),
+      meta: {
+         title: "Admin App Manager - FreeiOS"
+      }
    },
    {
       path: "/editor/:id",
-      component: () =>  import("../pages/Editor.vue")
+      component: () =>  import("../pages/Editor.vue"),
+      meta: {
+         title: "Upgrade App - FreeiOS"
+      }
    },
    {
       path: "/upload",
       component: () => import("../pages/Editor.vue"),
       meta: {
-         upload: true
+         upload: true,
+         title: "Update App - FreeiOS"
       }
    },
    {
       path: "/icloud",
-      component: () => import("../pages/iCloudManager.vue")
+      component: () => import("../pages/iCloudManager.vue"),
+      meta: {
+         title: "iCloud Manager - FreeiOS"
+      }
    },
    {
       path: "/md-(tutorial|rules|faqs)",
@@ -40,28 +50,37 @@ const routes = [
                "rules": "Nội quy",
                "faqs": "FAQs"
             }[$route.params.pathMatch]
-         }
+         },
+         _title: $route => $route.meta.title($route) + " - FreeiOS"
       }
    },
    {
       path: "/login",
-      component: () => import("../pages/Login.vue")
+      component: () => import("../pages/Login.vue"),
+      meta: {
+         title: "Login Admin - FreeiOS"
+      }
    },
    {
       path: "/myaccount",
-      component: () => import("../pages/MyAccount.vue")
+      component: () => import("../pages/MyAccount.vue"),
+      meta: {
+         title: "My Account Admin - FreeiOS"
+      }
    },
    {
       path: "/logout",
-      component: () => import("../pages/Logout.vue")
+      component: () => import("../pages/Logout.vue"),
+      meta: {
+         title: "Logout - FreeiOS"
+      }
    },
    {
       path: "*",
-      component: () => import("../pages/404.vue")
-   },
-   {
-      path: "/404",
-      component: () =>  import("../pages/404.vue")
+      component: () => import("../pages/404.vue"),
+      meta: {
+         title: "404 Not Found - FreeiOS"
+      }
    }
 ]
 

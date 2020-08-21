@@ -39,6 +39,9 @@
          this.$router.afterEach((to, from) => {
             //  finish the progress bar
             this.$Progress.finish()
+            
+            let fn = to.meta._title || to.meta.title
+            document.title = typeof fn == "function" ? fn(this.$route) : fn
          })
 
          this.$store.dispatch("currentUser")

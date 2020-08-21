@@ -299,7 +299,7 @@
                      .delete("/admin/api/app.php", formData)
                      .then(res => { if ( typeof res.data == "object" ) return res.data; try { return JSON.parse(res.data) } catch(e) { return { error: 1, mess: res.data } } })
                      .then(response => {
-                        console.log(response)
+                        
                         if (response.error == 1)
                            throw new Error(response.mess)
                         return response
@@ -350,7 +350,7 @@
            this.$axios.post("/admin/api/app.php", formData)
                .then(res => { if ( typeof res.data == "object" ) return res.data; try { return JSON.parse(res.data) } catch(e) { return { error: 1, mess: res.data } } })
                .then(json => {
-                  console.log(json)
+                  
                   if (json.error == 1) {
                      throw new Error(json.mess)
                   } else {
@@ -358,7 +358,7 @@
                   }
                })
                .catch(e => {
-                  console.log(e)
+                  
                   this.$AppError(e.message, e.stack)
                })
                .finally(() => loading.hide())
@@ -377,7 +377,7 @@
                .then(res => { if ( typeof res.data == "object" ) return res.data; try { return JSON.parse(res.data) } catch(e) { return { error: 1, mess: res.data } } })
                .then(json => {
                   
-                  console.log( typeof json )
+                  
                   if (json.error == 1) {
                      if ( json["auth-error"] == true ) {
                         this.$router.push("/login?url=" + this.$route.path)

@@ -118,7 +118,7 @@
            this.$axios.post("/admin/api/icloud.php", formData)
                .then(res => { if ( typeof res.data == "object" ) return res.data; try { return JSON.parse(res.data) } catch(e) { return { error: 1, mess: res.data } } })
                .then(json => {
-                  console.log(json)
+                  
                   if (json.error == 1) {
                      throw new Error(json.mess)
                   } else {
@@ -126,7 +126,7 @@
                   }
                })
                .catch(e => {
-                  console.log(e)
+                  
                   this.$AppError(e.message, e.stack)
                })
                .finally(() => loading.hide())
@@ -145,7 +145,7 @@
         this.$axios.get("/admin/api/icloud.php")
             .then(res => { if ( typeof res.data == "object" ) return res.data; try { return JSON.parse(res.data) } catch(e) { return { error: 1, mess: res.data } } })
             .then(json => {
-               console.log(json)
+               
                if (Array.isArray(json)) {
                   json.map(e => {
                      if (!("key" in e)) {
